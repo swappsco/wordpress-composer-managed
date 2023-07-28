@@ -47,6 +47,10 @@
     {
         "type": "path",
         "url": "upstream-configuration"
+    },
+    {
+      "type": "composer",
+      "url": "https://repo.packagist.com/swappsco/"
     }
   ],
   "require": {
