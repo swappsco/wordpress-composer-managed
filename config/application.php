@@ -143,14 +143,6 @@ if (file_exists($env_config)) {
     require_once $env_config;
 }
 
-if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-	$secrets_json_text = file_get_contents('/files/private/secrets.json');
-	$data = json_decode($secrets_json_text, TRUE);
-	Config::define('WP_SENTRY_PHP_DSN', $data['WP_SENTRY_PHP_DSN'] ? $data['WP_SENTRY_PHP_DSN'] : "");
-	Config::define('WP_SENTRY_ENV', $_ENV['PANTHEON_ENVIRONMENT'] == "live" ? "production" : 'develop');
-	Config::define('WP_SENTRY_ERROR_TYPES', E_ALL & ~E_DEPRECATED & ~E_NOTICE & ~E_USER_DEPRECATED & ~E_WARNING & ~E_USER_WARNING);
-}
-
 Config::apply();
 
 /**
